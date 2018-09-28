@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ACCOUNT BALANCE</title>
+    <link rel="stylesheet" type="text/css" href="balanceAccount.css" media="screen"/>
+</head>
+<body>
+                     <h3>Account Balance</h3>
+        <input id="Description" type="text" placeholder="Enter descripion"/>
+
+        <input id="Amount" type="text" placeholder="Enter the Amount"/>
+
+        <select id="mySelect" >
+                <option value="Income" id="1">Income</option>
+                <option value="Expense" id="2">Expense</option>
+              </select>
+
+    <button id="getAdd">Add</button>
+
+    <div id="container">
+        
+      <div id="expensesIncomes">
+
+          <div id="income"></div>
+          <div id="expense"></div>
+     </div>
+    
+     <hr>
+     <div id="balance"></div>
+     
+
+    </div>
+    <script src="balanceAccount.js"></script>
+</body>
+</html>

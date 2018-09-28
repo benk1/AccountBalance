@@ -1,0 +1,40 @@
+
+
+/*#wrapperId{
+   display:flex;
+   justify-content: space-around;
+    border: 1 px solid red;
+    background-color: blue;
+    }*/
+
+    #container{
+        display: flex;
+        flex-direction: column;
+        border: 3px solid black;
+    }
+    h3{
+        text-align: center;
+    }
+
+button {
+    padding: 10px;
+    /*border-radius: 3px;*/
+    color: darkslategrey;
+    /*font-weight: 550;*/
+    /*text-transform: uppercase;*/
+    
+}
+
+
+#expensesIncomes{
+   display: flex;
+   justify-content: space-around;
+    margin-top: 40px;
+}
+
+#balance{
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    margin-top: 70px;
+    text-align: center;
+}
