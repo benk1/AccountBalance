@@ -9,6 +9,8 @@ let addButton = document.querySelector("#getAdd");
 let description = document.querySelector("#Description");
 let  amount = document.querySelector("#Amount");
 let element = document.createElement('hr');
+element.id = "horizontalLine";
+let text = document.querySelector("#text");
 
 
 function getAdd(){
@@ -87,24 +89,24 @@ let incomesBlock =  personalAccount.incomes.map(income =>
 
 
 income.innerHTML = incomesBlock.join("");
-//wrapper.appendChild(income);
+
 
   
 let expensesBlock =  personalAccount.expenses.map(expense => 
     `<div id="expenseInfo">${expense.description} ${expense.amount} </div>` 
 );
-
+expense.innerHTML = `<hr>`;
 expense.innerHTML = expensesBlock.join("");
-//wrapper.appendChild(expense);
+
 
  
 let balance1 = personalAccount.totalIncome() - personalAccount.totalExpense();
 
  //`<div id="expenseInfo">${balance1} </div>` 
- 
+ //text.innerHTML += `<p>Balance</p>`;
+ //balance.innerHTML = `<hr>`;
  balance.innerHTML += `Net: ${balance1}`;
- //wrapper.appendChild(balance);
-
+ 
     
      
     
