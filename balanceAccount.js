@@ -4,16 +4,11 @@ wrapper.id = "wrapperId";
 document.body.appendChild(wrapper);
 
 let description = document.querySelector("#Description");
-let  amount = document.querySelector("#Amount");
+let amount = document.querySelector("#Amount");
 let selector = document.querySelector("#mySelect");
 let addButton = document.querySelector("#getAdd");
 let container = document.querySelector("#container")
 
-
-
-let element = document.createElement('hr');
-element.id = "horizontalLine";
-let text = document.querySelector("#text");
 
 let incomeDiv = document.querySelector("#income");
 let expenseDiv = document.querySelector("#expense");
@@ -34,8 +29,11 @@ function displayDateTime() {
 
 
 function getAdd(){
+   
     let description1 = description.value;
+    description.value = "";
     let amount1 = Number(amount.value);
+    amount.value = "";
     let selector = document.querySelector("#mySelect");
     if (selector.value === "Income") {
        
