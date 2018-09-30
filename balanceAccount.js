@@ -3,14 +3,34 @@ let wrapper = document.createElement('div');
 wrapper.id = "wrapperId";
 document.body.appendChild(wrapper);
 
-let container = document.querySelector("#container")
-let selector = document.querySelector("#mySelect");
-let addButton = document.querySelector("#getAdd");
 let description = document.querySelector("#Description");
 let  amount = document.querySelector("#Amount");
+let selector = document.querySelector("#mySelect");
+let addButton = document.querySelector("#getAdd");
+let container = document.querySelector("#container")
+
+
+
 let element = document.createElement('hr');
 element.id = "horizontalLine";
 let text = document.querySelector("#text");
+
+let incomeDiv = document.querySelector("#income");
+let expenseDiv = document.querySelector("#expense");
+let balanceDiv = document.querySelector("#balanceDiv");
+
+
+function displayDateTime() {
+  var date = new Date();
+  var ndate = date.getDate();
+  //var nday = date.getDay();
+  var nmonth = date.getMonth() + 1;
+  var nHrs = date.getHours();
+  var nMin = date.getMinutes();
+  var nYear = date.getFullYear();
+  return (ndate + "/" + nmonth + "/" + nYear + "  " + nHrs + ":" + nMin);
+}
+
 
 
 function getAdd(){
@@ -33,19 +53,15 @@ addButton.addEventListener('click', function(e) {
 });
 
 
-
-   
-
-
 let personalAccount = {
     firstName : 'Ben',
     lastName : 'Kakengi',
-    incomes : [{description : 'salary', amount :36000},
-               {description: 'bonus', amount: 10000},
-               {description: 'online courses', amount :5500}],
-    expenses : [{description:'rent', amount:18000},
-                {description:'shopping', amount: 6000},
-                {description: 'travel', amount: 3000}],
+    incomes : [{description : 'salary', amount :3000},
+               {description: 'bonus', amount: 1000},
+               {description: 'online courses', amount :5000}],
+    expenses : [{description:'rent', amount:1000},
+                {description:'shopping', amount: 100},
+                {description: 'travel', amount: 100}],
     
     calculateTotal :(accumulator, currentValue) => accumulator + currentValue.amount,  
   
@@ -66,47 +82,48 @@ let personalAccount = {
   
     addIncome : function(description1,amount1) {
     
-      this.incomes.push({description:description1, amount: amount1});
+      this.incomes.push({description:description1, amount: amount1}) ;
     },
   
     addExpense : function(description1,amount1) {
      
-      this.expenses.push({description: description1, amount: amount1});
+      this.expenses.push({description: description1, amount: amount1}) ;
     }
   }
-
-let income = document.querySelector("#income");
-let expense = document.querySelector("#expense");
-let balance = document.querySelector("#balance");
 
 
              
             
 let incomesBlock =  personalAccount.incomes.map(income => 
-    `<div id="incomeInfo">${income.description} ${income.amount} </div>` 
+    `<div id="incomeInfo">${income.description} ${income.amount} $   ${displayDateTime()} </div>` 
     
 );
 
 
-income.innerHTML = incomesBlock.join("");
+incomeDiv.innerHTML = incomesBlock.join(""); 
 
 
   
 let expensesBlock =  personalAccount.expenses.map(expense => 
-    `<div id="expenseInfo">${expense.description} ${expense.amount} </div>` 
+    `<div id="expenseInfo">${expense.description} ${expense.amount} $   ${displayDateTime()}  </div>` 
 );
-expense.innerHTML = `<hr>`;
-expense.innerHTML = expensesBlock.join("");
+//expense.innerHTML = `<hr>`;
+expenseDiv.innerHTML = expensesBlock.join("");
 
 
  
-let balance1 = personalAccount.totalIncome() - personalAccount.totalExpense();
+let balance = personalAccount.totalIncome() - personalAccount.totalExpense();
 
  //`<div id="expenseInfo">${balance1} </div>` 
  //text.innerHTML += `<p>Balance</p>`;
  //balance.innerHTML = `<hr>`;
- balance.innerHTML += `Net: ${balance1}`;
  
+ 
+ 
+ //balanceDiv.appendChild(net);
+ 
+ balanceDiv.innerHTML +=`<p id="NetId">Net: ${balance} </p>` ;
+ //balanceDiv.innerHTML +=`Net: ${balance}`;
     
      
     

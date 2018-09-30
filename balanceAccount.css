@@ -1,42 +1,50 @@
 
 
-/*#wrapperId{
-   display:flex;
-   justify-content: space-around;
-    border: 1 px solid red;
-    background-color: blue;
-    }*/
 
-    #container{
-        display: flex;
-        
-        border: 3px solid black;
+
+#container{
+display: flex;
+flex-direction: column;
+border: 3px solid black;
+justify-content: center;
     }
+
+    #justifyDiv{
+        display: flex;
+        justify-content: space-between;
+    }
+
     h3{
         text-align: center;
     }
 
-    #text-balance{
+    /*#text-balance{
         width: 66%;
         margin-bottom: 107px;
-       /*display: none;*/
-    }
+       display: none;
+    }*/
 
     #balanceParagraph{
-        position: relative;
+       /* position: relative;*/
         text-align: center;
-        top: 147px;
+       /* top: 147px;*/
     }
 
-    #incomeParagraph{
+    #NetId{
+        text-align: center;
+        justify-content: center;
+    }
+
+    /*#incomeParagraph{
         position: relative;
         bottom: 5px;
-    }
+    }*/
 
-    #hrandparagrph{
+   /* #hrandparagrph{
         display: flex;
         flex-direction: column;
-    }
+    }*/
+
 button{
     padding: 10px;
     /*border-radius: 3px;*/
@@ -50,20 +58,23 @@ button{
 #columnIncomes{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    margin-bottom: 171px;
+    
+    /*margin-bottom: 171px;*/
 }
 
 #columnExpenses{
-    display: flex;
+display: flex;
 flex-direction: column;
-justify-content: space-around;
-margin-bottom: 171px;
+margin-right: 400px;
+
+/*margin-left: 354px;*/
 }
 
-#balance{
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    margin-top: 257px;
-    text-align: center;
+#balanceDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 150px;
+    margin-right: 402px;
+    
 }
