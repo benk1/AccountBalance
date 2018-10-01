@@ -34,32 +34,54 @@ function getAdd(){
     description.value = "";
     let amount1 = Number(amount.value);
     amount.value = "";
-    let selector = document.querySelector("#mySelect");
+    let transaction 
+    
     if (selector.value === "Income") {
        
-        personalAccount.addIncome(description1,amount1);
+       personalAccount.addIncome(description1,amount1);
+
     }else if(selector.value === "Expense"){
         
 
-        personalAccount.addExpense(description1,amount1);
+      personalAccount.addExpense(description1,amount1);
     }
-       
    }
 
 addButton.addEventListener('click', function(e) {
-    getAdd();    
+   getAdd();  
+    let incomesBlock =  personalAccount.incomes.map(income => 
+    `<div id="incomeInfo">${income.description} ${income.amount} ${income.time} </div>` 
+    
+);
+
+
+incomeDiv.innerHTML = incomesBlock.join(""); 
+
+
+  
+let expensesBlock =  personalAccount.expenses.map(expense => 
+    `<div id="expenseInfo">${expense.description} ${expense.amount} $     </div>` 
+);
+
+expenseDiv.innerHTML = expensesBlock.join("");
+
+
+ 
+let balance = personalAccount.totalIncome() - personalAccount.totalExpense();
+
+  balanceDiv.innerHTML +=`<p id="NetId">Net: ${balance} </p>` ;
 });
 
 
 let personalAccount = {
     firstName : 'Ben',
     lastName : 'Kakengi',
-    incomes : [{description : 'salary', amount :3000},
-               {description: 'bonus', amount: 1000},
-               {description: 'online courses', amount :5000}],
-    expenses : [{description:'rent', amount:1000},
-                {description:'shopping', amount: 100},
-                {description: 'travel', amount: 100}],
+    incomes : [{description : 'salary', amount :3000,time:displayDateTime()},
+               {description: 'bonus', amount: 1000,time:displayDateTime()},
+               {description: 'online courses', amount :5000,time:displayDateTime()}],
+    expenses : [{description:'rent', amount:1000,time:displayDateTime()},
+                {description:'shopping', amount: 100,time:displayDateTime()},
+                {description: 'travel', amount: 100,time:displayDateTime()}],
     
     calculateTotal :(accumulator, currentValue) => accumulator + currentValue.amount,  
   
@@ -77,23 +99,35 @@ let personalAccount = {
       let blance =  0;
       return `Balance : ${this.totalIncome() - this.totalExpense()}`;
     },
+
+    addIncome(description1,amount1) {
+      this.incomes.push({description:description1, amount: amount1, time: displayDateTime()}) ;
+     // return `description: ${description1}  amount:${amount1}  ;
+  },
+
+
   
-    addIncome : function(description1,amount1) {
+    //addIncome : function(description1,amount1) {
     
-      this.incomes.push({description:description1, amount: amount1}) ;
-    },
-  
-    addExpense : function(description1,amount1) {
+      //this.incomes.push({description:description1, amount: amount1}) ;
+   //},
+
+
+   addExpense(description1,amount1) {
+    this.expenses.push({description:description1, amount: amount1}) ;
+    return `description: ${description1}  amount:${amount1}  ${displayDateTime()}`;
+},
+    //addExpense : function(description1,amount1) {
      
-      this.expenses.push({description: description1, amount: amount1}) ;
-    }
+      //this.expenses.push({description: description1, amount: amount1}) ;
+    //}
   }
 
 
              
-            
+     
 let incomesBlock =  personalAccount.incomes.map(income => 
-    `<div id="incomeInfo">${income.description} ${income.amount} $   ${displayDateTime()} </div>` 
+    `<div id="incomeInfo">${income.description} ${income.amount} $  ${displayDateTime()}  </div>` 
     
 );
 
@@ -103,25 +137,17 @@ incomeDiv.innerHTML = incomesBlock.join("");
 
   
 let expensesBlock =  personalAccount.expenses.map(expense => 
-    `<div id="expenseInfo">${expense.description} ${expense.amount} $   ${displayDateTime()}  </div>` 
+    `<div id="expenseInfo">${expense.description} ${expense.amount} $ ${displayDateTime()}   </div>` 
 );
-//expense.innerHTML = `<hr>`;
+
 expenseDiv.innerHTML = expensesBlock.join("");
 
 
  
 let balance = personalAccount.totalIncome() - personalAccount.totalExpense();
 
- //`<div id="expenseInfo">${balance1} </div>` 
- //text.innerHTML += `<p>Balance</p>`;
- //balance.innerHTML = `<hr>`;
+  balanceDiv.innerHTML +=`<p id="NetId">Net: ${balance} </p>` ;
  
- 
- 
- //balanceDiv.appendChild(net);
- 
- balanceDiv.innerHTML +=`<p id="NetId">Net: ${balance} </p>` ;
- //balanceDiv.innerHTML +=`Net: ${balance}`;
-    
+
      
     
