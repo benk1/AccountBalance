@@ -14,6 +14,16 @@ let incomeDiv = document.querySelector("#income");
 let expenseDiv = document.querySelector("#expense");
 let balanceDiv = document.querySelector("#balanceDiv");
 
+function userIdGenerator() {
+  var lettersNumbers =
+    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var randomId = "";
+  for (var i = 0; i < 7; i++) {
+    randomId +=
+      lettersNumbers[Math.floor(Math.random() * lettersNumbers.length)];
+  }
+  return randomId;
+}
 
 function displayDateTime() {
   var date = new Date();
@@ -54,19 +64,14 @@ addButton.addEventListener('click', function(e) {
     
 );
 
-
 incomeDiv.innerHTML = incomesBlock.join(""); 
 
-
-  
 let expensesBlock =  personalAccount.expenses.map(expense => 
     `<div id="expenseInfo">${expense.description} ${expense.amount} $     </div>` 
 );
 
 expenseDiv.innerHTML = expensesBlock.join("");
 
-
- 
 let balance = personalAccount.totalIncome() - personalAccount.totalExpense();
 
   balanceDiv.innerHTML +=`<p id="NetId">Net: ${balance} </p>` ;
@@ -80,8 +85,8 @@ let personalAccount = {
                {description: 'bonus', amount: 1000,time:displayDateTime()},
                {description: 'online courses', amount :5000,time:displayDateTime()}],
     expenses : [{description:'rent', amount:1000,time:displayDateTime()},
-                {description:'shopping', amount: 100,time:displayDateTime()},
-                {description: 'travel', amount: 100,time:displayDateTime()}],
+                {description:'shopping', amount: 1000,time:displayDateTime()},
+                {description: 'travel', amount: 1000,time:displayDateTime()}],
     
     calculateTotal :(accumulator, currentValue) => accumulator + currentValue.amount,  
   
@@ -105,27 +110,13 @@ let personalAccount = {
      // return `description: ${description1}  amount:${amount1}  ;
   },
 
-
-  
-    //addIncome : function(description1,amount1) {
-    
-      //this.incomes.push({description:description1, amount: amount1}) ;
-   //},
-
-
    addExpense(description1,amount1) {
     this.expenses.push({description:description1, amount: amount1}) ;
-    return `description: ${description1}  amount:${amount1}  ${displayDateTime()}`;
+    //return `description: ${description1}  amount:${amount1}  ${displayDateTime()}`;
 },
-    //addExpense : function(description1,amount1) {
-     
-      //this.expenses.push({description: description1, amount: amount1}) ;
-    //}
+    
   }
-
-
-             
-     
+    
 let incomesBlock =  personalAccount.incomes.map(income => 
     `<div id="incomeInfo">${income.description} ${income.amount} $  ${displayDateTime()}  </div>` 
     
@@ -133,8 +124,6 @@ let incomesBlock =  personalAccount.incomes.map(income =>
 
 
 incomeDiv.innerHTML = incomesBlock.join(""); 
-
-
   
 let expensesBlock =  personalAccount.expenses.map(expense => 
     `<div id="expenseInfo">${expense.description} ${expense.amount} $ ${displayDateTime()}   </div>` 
@@ -142,8 +131,6 @@ let expensesBlock =  personalAccount.expenses.map(expense =>
 
 expenseDiv.innerHTML = expensesBlock.join("");
 
-
- 
 let balance = personalAccount.totalIncome() - personalAccount.totalExpense();
 
   balanceDiv.innerHTML +=`<p id="NetId">Net: ${balance} </p>` ;
